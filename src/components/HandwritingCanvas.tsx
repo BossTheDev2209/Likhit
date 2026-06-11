@@ -4,15 +4,17 @@ import { useProject } from "../store/useProject";
 import { segmentClusters } from "../engine/segment";
 import { layoutPage } from "../engine/layout";
 import { drawTemplate, drawClusters, makeMeasure } from "../engine/render";
+import { applyRealism } from "../export/realism";
 
 const DPI = 96;
 
 export function HandwritingCanvas({ canvasRef }: { canvasRef: React.RefObject<HTMLCanvasElement | null> }) {
   const localRef = useRef<HTMLCanvasElement>(null);
   const ref = canvasRef ?? localRef;
-  const { text, seed, moods, moodId, templates, templateId, lineOverrides } = useProject((s) => ({
+  const { text, seed, moods, moodId, templates, templateId, lineOverrides, realism } = useProject((s) => ({
     text: s.text, seed: s.seed, moods: s.moods, moodId: s.moodId,
     templates: s.templates, templateId: s.templateId, lineOverrides: s.lineOverrides,
+    realism: s.realism,
   }));
 
   useEffect(() => {
@@ -33,9 +35,10 @@ export function HandwritingCanvas({ canvasRef }: { canvasRef: React.RefObject<HT
       });
       drawTemplate(ctx, template, DPI);
       drawClusters(ctx, laid, mood);
+      applyRealism(ctx, canvas.width, canvas.height, realism);
     });
     return () => { cancelled = true; };
-  }, [text, seed, moods, moodId, templates, templateId, lineOverrides, ref]);
+  }, [text, seed, moods, moodId, templates, templateId, lineOverrides, realism, ref]);
 
   return <canvas ref={ref} style={{ width: 480, border: "1px solid #ccc", boxShadow: "0 1px 6px rgba(0,0,0,.15)" }} />;
 }

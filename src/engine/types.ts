@@ -49,6 +49,7 @@ export interface Project {
   templateId: string;
   templates: Template[];
   lineOverrides: LineOverride[];
+  realism: { grain: boolean; lighting: boolean };
 }
 
 export interface LaidOutCluster {

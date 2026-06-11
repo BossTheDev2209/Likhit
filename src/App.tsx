@@ -5,6 +5,7 @@ import { SourceEditor } from "./components/SourceEditor";
 import { MoodControls } from "./components/MoodControls";
 import { TemplatePicker } from "./components/TemplatePicker";
 import { LineOverrides } from "./components/LineOverrides";
+import { RealismControls } from "./components/RealismControls";
 
 export default function App() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -15,6 +16,7 @@ export default function App() {
         <SourceEditor />
         <TemplatePicker />
         <MoodControls />
+        <RealismControls />
         <LineOverrides />
       </div>
       <div style={{ overflow: "auto", background: "#eef0f3", padding: 16, display: "flex", justifyContent: "center" }}>

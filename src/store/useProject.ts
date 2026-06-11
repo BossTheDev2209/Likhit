@@ -16,6 +16,8 @@ export interface ProjectState {
   templates: Template[];
   lineOverrides: LineOverride[];
 
+  realism: { grain: boolean; lighting: boolean };
+
   setText: (t: string) => void;
   setMoodId: (id: string) => void;
   setTemplateId: (id: string) => void;
@@ -23,6 +25,7 @@ export interface ProjectState {
   saveMood: (mood: Mood) => void;          // empty id => create new
   setLineOverride: (o: LineOverride) => void;
   clearLineOverride: (lineIndex: number) => void;
+  setRealism: (patch: Partial<{ grain: boolean; lighting: boolean }>) => void;
   toProjectJson: () => string;
   loadProjectJson: (json: string) => void;
 }
@@ -39,6 +42,7 @@ function initial(): Project {
     templateId: STARTER_TEMPLATES[1].id,
     templates: STARTER_TEMPLATES.map((t) => ({ ...t })),
     lineOverrides: [],
+    realism: { grain: true, lighting: false },
   };
 }
 
@@ -64,12 +68,13 @@ export function createProjectState(persist = false) {
       set({ lineOverrides: [...get().lineOverrides.filter((x) => x.lineIndex !== o.lineIndex), o] }),
     clearLineOverride: (lineIndex) =>
       set({ lineOverrides: get().lineOverrides.filter((x) => x.lineIndex !== lineIndex) }),
+    setRealism: (patch) => set({ realism: { ...get().realism, ...patch } }),
     toProjectJson: () => {
       const s = get();
       const proj: Project = {
         schemaVersion: 1, seed: s.seed, text: s.text, moodId: s.moodId,
         moods: s.moods, templateId: s.templateId, templates: s.templates,
-        lineOverrides: s.lineOverrides,
+        lineOverrides: s.lineOverrides, realism: s.realism,
       };
       return JSON.stringify(proj, null, 2);
     },
@@ -79,6 +84,7 @@ export function createProjectState(persist = false) {
       set({
         seed: p.seed, text: p.text, moodId: p.moodId, moods: p.moods,
         templateId: p.templateId, templates: p.templates, lineOverrides: p.lineOverrides,
+        realism: p.realism ?? { grain: true, lighting: false },
       });
     },
   }));

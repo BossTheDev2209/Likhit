@@ -6,6 +6,7 @@ import { MoodControls } from "./components/MoodControls";
 import { TemplatePicker } from "./components/TemplatePicker";
 import { LineOverrides } from "./components/LineOverrides";
 import { RealismControls } from "./components/RealismControls";
+import { Toolbar } from "./components/Toolbar";
 
 export default function App() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -13,6 +14,7 @@ export default function App() {
     <div style={{ display: "grid", gridTemplateColumns: "320px 1fr", gap: 16, padding: 16, height: "100vh" }}>
       <div style={{ display: "flex", flexDirection: "column", gap: 12, overflow: "auto" }}>
         <h2 style={{ margin: 0 }}>ลิขิต · Likhit</h2>
+        <Toolbar canvasRef={canvasRef} />
         <SourceEditor />
         <TemplatePicker />
         <MoodControls />

@@ -1,1 +1,57 @@
-@import url('https://fonts.googleapis.com/css2?family=Caveat&family=Charmonman&family=Gloria+Hallelujah&family=Itim&family=Mali&family=Shadows+Into+Light&family=Sriracha&display=swap');
+/* Self-hosted fonts — no external CDN required */
+
+@font-face {
+  font-family: 'Itim';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/Itim-Regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Mali';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/Mali-Regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Sriracha';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/Sriracha-Regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Charmonman';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/Charmonman-Regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Caveat';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/Caveat-Regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Shadows Into Light';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/ShadowsIntoLight-Regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Gloria Hallelujah';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/GloriaHallelujah-Regular.woff2') format('woff2');
+}

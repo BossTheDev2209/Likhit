@@ -3,6 +3,7 @@ import { useRef } from "react";
 import { HandwritingCanvas } from "./components/HandwritingCanvas";
 import { SourceEditor } from "./components/SourceEditor";
 import { MoodControls } from "./components/MoodControls";
+import { TemplatePicker } from "./components/TemplatePicker";
 
 export default function App() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -11,6 +12,7 @@ export default function App() {
       <div style={{ display: "flex", flexDirection: "column", gap: 12, overflow: "auto" }}>
         <h2 style={{ margin: 0 }}>ลิขิต · Likhit</h2>
         <SourceEditor />
+        <TemplatePicker />
         <MoodControls />
       </div>
       <div style={{ overflow: "auto", background: "#eef0f3", padding: 16, display: "flex", justifyContent: "center" }}>

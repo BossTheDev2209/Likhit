@@ -4,6 +4,7 @@ import { HandwritingCanvas } from "./components/HandwritingCanvas";
 import { SourceEditor } from "./components/SourceEditor";
 import { MoodControls } from "./components/MoodControls";
 import { TemplatePicker } from "./components/TemplatePicker";
+import { LineOverrides } from "./components/LineOverrides";
 
 export default function App() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -14,6 +15,7 @@ export default function App() {
         <SourceEditor />
         <TemplatePicker />
         <MoodControls />
+        <LineOverrides />
       </div>
       <div style={{ overflow: "auto", background: "#eef0f3", padding: 16, display: "flex", justifyContent: "center" }}>
         <HandwritingCanvas canvasRef={canvasRef} />
